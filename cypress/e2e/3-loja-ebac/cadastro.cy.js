@@ -5,7 +5,7 @@ import {fa, faker } from '@faker-js/faker';
 describe('funcionalidade: cadastro', () => {
 
     beforeEach(() => {
-        cy.visit('minha-conta')
+        cy.visit('minha-conta/')
     });
 
     it('deve completar o cadastro com sucesso ', () => {
@@ -39,4 +39,8 @@ describe('funcionalidade: cadastro', () => {
         cy.get('.woocommerce-message').should('exist')
     });
     
+    it('deve completar o cadastro com sucesso - usando comandos customizados', () => {
+        cy.preCadastro(faker.internet.email(), '12345', faker.person.firstName(), faker.person.lastName())        
+        cy.get('.woocommerce-message').should('exist')
+    });
 });

@@ -67,4 +67,12 @@ describe("funcionalidade: login", () => {
       );
     });
   });
+
+  it('deve fazer login com sucesso - usando comandos customizados', () => {
+    cy.login('admin30', '12345')
+    cy.get(".woocommerce-MyAccount-content > :nth-child(2)").should(
+        "contain",
+        "Olá, admin30 (não é admin30? Sair)"
+    );
+  });
 });
